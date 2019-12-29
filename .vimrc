@@ -59,7 +59,7 @@ augroup END
 " show a visual line under the cursor's current line
 set cursorline
 
-" add the proper PEP 8 indentation
+" python setup:  add the proper PEP 8 indentation
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -71,6 +71,9 @@ au BufNewFile,BufRead *.py
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
+
+" show line breaks and carriage
+set list listchars=tab:>\ ,trail:-,eol:¬
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
