@@ -73,7 +73,7 @@ au BufNewFile,BufRead *.py
 set showmatch
 
 " show line breaks and carriage
-set list listchars=tab:>\ ,trail:-,eol:¬
+set list listchars=tab:┤\ ,trail:-,eol:¬
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
