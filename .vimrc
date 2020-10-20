@@ -1,36 +1,26 @@
-set nocompatible              " required
-filetype off                  " required
+syntax on
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+let mapleader = " "
+set nocompatible
+set backspace=indent,eol,start
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set noswapfile
+set incsearch
+set colorcolumn=80
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
-Plugin 'scrooloose/nerdtree'
-" ...
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'
+call plug#end()
 
-" add split navigation keys ctrl+hjkl
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+colorscheme gruvbox
+set background=dark
 
-" ctrl+n open NerdTree
-map <C-n> :NERDTreeToggle<CR>
-
-" Load NERDTRee Automatically
-" autocmd vimenter * NERDTree
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
@@ -44,6 +34,19 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" **** netrw setup **** "
+let g:netrw_browse_split = 3 " open file in new tab (1 hor, 2 ver, 3 new, 4 prev)
+
+nnoremap <leader>h :wincmd h<CR>
+
+
+
+" **** rebind navigation between split screens **** "
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " enable syntax highlighting
 syntax enable
 
@@ -56,24 +59,7 @@ augroup numbertoggle
 augroup END
 
 
-" show a visual line under the cursor's current line
-set cursorline
 
-" python setup:  add the proper PEP 8 indentation
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
-
-" show the matching part of the pair for [] {} and ()
-set showmatch
-
-" show line breaks and carriage
-set list listchars=tab:┤\ ,trail:-,eol:¬
 
 " enable all Python syntax highlighting features
-let python_highlight_all = 1
+" let python_highlight_all = 1
