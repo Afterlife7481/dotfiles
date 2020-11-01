@@ -1,8 +1,12 @@
 syntax on
 
-let mapleader = " "
-set nocompatible
+set nocompatible " use VIM setting rather than legacy VI settings
 set backspace=indent,eol,start
+" show training space, tabs, spaces etc..
+set list
+set showbreak=↪\
+set listchars=tab:→\ ,eol:¬,nbsp:␣,trail:•,space:·,extends:⟩,precedes:⟨
+
 
 set noerrorbells
 set tabstop=4 softtabstop=4
@@ -10,9 +14,9 @@ set shiftwidth=4
 set expandtab
 set noswapfile
 set incsearch
-set colorcolumn=80
-
-
+set colorcolumn=80 "show vertical line at 80 characters
+set cursorline
+set noswapfile
 
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
@@ -34,32 +38,30 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" **** netrw setup **** "
-let g:netrw_browse_split = 3 " open file in new tab (1 hor, 2 ver, 3 new, 4 prev)
+"netrw setup"
+let g:netrw_banner = 0
+let g:netrw_browse_split = 3 "open file in a new tab
+let g:netrw_winsize = -25
+let g:netrw_liststyle = 3 "tree-view
 
+let mapleader = ","
+"remap the navigation between split windowst
 nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 
 
 
-" **** rebind navigation between split screens **** "
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" enable syntax highlighting
-syntax enable
 
 " show relative line numbers + toggle
 set number relativenumber
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 
 
-
-" enable all Python syntax highlighting features
-" let python_highlight_all = 1
+     
